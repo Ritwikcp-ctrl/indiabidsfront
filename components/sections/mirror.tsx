@@ -1,13 +1,15 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
-import { formatInr } from "@/components/ui/lib/format"
+import { cn } from "@/components/ui/lib/utils"
+import { formatInr } from "@/components/ui/lib/money"
 import { mockListings } from "@/components/ui/lib/mock"
 
 const HYPOTHETICAL_BID = 1_500
@@ -28,11 +30,13 @@ export function Mirror() {
   }
 
   return (
-    <section className="px-6 py-24">
+    <section id="mirror" className="scroll-mt-8 px-6 py-24">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">The Mirror</p>
+        <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
+          The Mirror
+        </p>
         <h2 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
-          See where you'd land.
+          See where you&apos;d land.
         </h2>
         <p className="mt-3 text-muted-foreground">
           Drop your URL. No payment yet — just a preview.
@@ -46,9 +50,12 @@ export function Mirror() {
             className="h-11"
             aria-label="Your website URL"
           />
-          <Button type="submit" size="lg" className="h-11 shrink-0">
+          <button
+            type="submit"
+            className={cn(buttonVariants({ size: "lg" }), "h-11 shrink-0")}
+          >
             Preview →
-          </Button>
+          </button>
         </form>
       </div>
 
@@ -91,11 +98,19 @@ export function Mirror() {
                 </div>
 
                 <p className="mt-4 text-sm text-muted-foreground">
-                  You're <strong className="text-foreground">{formatInr(preview.gapToFirst)}</strong> away
-                  from the crown. Claim this spot to make it real.
+                  You&apos;re{" "}
+                  <strong className="text-foreground">
+                    {formatInr(preview.gapToFirst)}
+                  </strong>{" "}
+                  away from the crown. Claim this spot to make it real.
                 </p>
 
-                <Button className="mt-4 w-full sm:w-auto">Claim this rank →</Button>
+                <Link
+                  href={`/bid?url=${encodeURIComponent(url)}`}
+                  className={cn(buttonVariants(), "mt-4 w-full sm:w-auto")}
+                >
+                  Claim this rank →
+                </Link>
               </CardContent>
             </Card>
           </motion.div>

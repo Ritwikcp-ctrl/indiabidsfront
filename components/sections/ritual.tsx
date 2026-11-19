@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
 import { Slider } from "@/components/ui/slider"
-import { formatInr } from "@/components/ui/lib/format"
+import { formatInr } from "@/components/ui/lib/money"
 import { categories } from "@/components/ui/lib/mock"
 
 const steps = ["Battlefield", "Stake", "Sign"] as const

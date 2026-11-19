@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+import { buttonVariants } from "@/components/ui/button"
 import { useEffect, useMemo, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -198,21 +200,27 @@ export function Pulse() {
 
       {/* CTAs */}
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-        className="mt-12 flex flex-col items-center gap-3 sm:flex-row"
-      >
-        <Button variant="outline" size="lg" className="min-w-44">
-          Watch it happen
-        </Button>
-        <Button size="lg" className="group min-w-44">
-          Jump in
-          <span className="ml-1.5 inline-block transition-transform group-hover:translate-x-0.5">
-            →
-          </span>
-        </Button>
-      </motion.div>
+  initial={{ opacity: 0, y: 12 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.8, duration: 0.5 }}
+  className="mt-12 flex flex-col items-center gap-3 sm:flex-row"
+>
+  <a
+    href="#tension-feed"
+    className={cn(buttonVariants({ variant: "outline", size: "lg" }), "min-w-44")}
+  >
+    Watch it happen
+  </a>
+  <Link
+    href="/bid"
+    className={cn(buttonVariants({ size: "lg" }), "group min-w-44")}
+  >
+    Jump in
+    <span className="ml-1.5 inline-block transition-transform group-hover:translate-x-0.5">
+      →
+    </span>
+  </Link>
+</motion.div>
     </section>
   )
 }

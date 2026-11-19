@@ -1,8 +1,10 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/components/ui/lib/utils"
 import { Separator } from "@/components/ui/separator"
-import { formatInr } from "@/components/ui/lib/format"
+import { formatInr } from "@/components/ui/lib/money"
 import { useLivePrice } from "@/components/sections/hooks/use-live-price"
 
 export function Whisper() {
@@ -28,12 +30,15 @@ export function Whisper() {
           Someone will outbid it today.
         </p>
 
-        <Button size="lg" className="group">
-          Claim your spot
-          <span className="ml-1.5 inline-block transition-transform group-hover:translate-x-0.5">
-            →
-          </span>
-        </Button>
+       <Link
+  href="/bid"
+  className={cn(buttonVariants({ size: "lg" }), "group")}
+>
+  Claim your spot
+  <span className="ml-1.5 inline-block transition-transform group-hover:translate-x-0.5">
+    →
+  </span>
+</Link>
 
         <p className="text-xs text-muted-foreground">
           Privacy · Terms · Refund policy · Contact

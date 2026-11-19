@@ -1,4 +1,9 @@
-import type { Battle, Category, Listing, Winner } from "@/components/types"
+import type {
+  Battle,
+  Category,
+  Listing,
+  Winner,
+} from "@/components/types/mock"
 
 export const categories: Category[] = [
   "AI & Agents",
@@ -25,8 +30,8 @@ export const mockListings: Listing[] = [
 ]
 
 export const mockBattles: Battle[] = [
-  { id: "b1", left: mockListings[0], right: mockListings[1], endsAt: new Date(Date.now() + 22 * 3_600_000).toISOString() },
-  { id: "b2", left: mockListings[2], right: mockListings[3], endsAt: new Date(Date.now() + 14 * 3_600_000).toISOString() },
+  { id: "b1", left: mockListings[0], right: mockListings[1], endsAt:""},
+  { id: "b2", left: mockListings[2], right: mockListings[3], endsAt: "" },
 ]
 
 export const mockWinners: Winner[] = [
